@@ -1,0 +1,71 @@
+
+// Escrito por: Alejandro Lozada Cortés-a.lozada10@uniandes.edu.co
+
+
+#include <RGBmatrixPanel.h>
+
+
+
+
+#define CLK  8   // Para ARDUINO UNO, ADAFRUIT METRO M0, etc.
+//#define CLK A4 // Para METRO M4 (no M0)
+//#define CLK 11 // Para ARDUINO MEGA
+#define OE   9
+#define LAT 10
+#define A   A0
+#define B   A1
+#define C   A2
+#define D   A3
+
+long rN1;
+long rN2;
+long rN3;
+long rN4;
+long rN5;
+long rN6;
+long rN7;
+long rN8;
+
+
+
+RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false);
+
+void setup() {
+
+
+  matrix.begin();
+
+
+}
+
+void loop() {
+
+  
+
+//Prende de forma aleatoria 4 LEDs en una arreglo de 20x20.Para cambiar 
+//el tamaño de la matriz basta con reconfigurar los topes de en la generación
+// de los números aleatorios. El tiempo que dura prendido cada grupo de LEDs es de 12s
+
+    rN1 = random(0,20);
+    rN2 = random(6,26);
+    rN3 = random(0,20);
+    rN4 = random(6,26);
+    rN5 = random(0,20);
+    rN6 = random(6,26);
+    rN7 = random(0,20);
+    rN8 = random(6,26);
+
+     
+    matrix.drawPixel(rN1, rN2, matrix.Color333(7, 7, 7));
+    matrix.drawPixel(rN3, rN4, matrix.Color333(7, 7, 7));
+    matrix.drawPixel(rN5, rN6, matrix.Color333(7, 7, 7));
+    matrix.drawPixel(rN7, rN8, matrix.Color333(7, 7, 7));
+//Acá se puede cambiar el tiempo que dura prendido el LED, en milisegundos
+    delay(12000);
+    matrix.fillScreen(matrix.Color333(0.99, 0.99, 0.99));
+  
+  
+
+  
+}
+
